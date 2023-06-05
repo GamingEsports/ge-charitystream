@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="css/bottom-bar.css">
+    <script src="src/bottom-bar.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=IBM+Plex+Mono&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+</head>
+<body>
+    <div class="graphic-wrapper">
+        <img class="charity-logo" src="assets/charity-logo.svg">
+        <div class="content-box">
+            <div class="segment split">
+                <div class="half">
+                    <div class="header">
+                        <span><img class="icon" src="assets/icons/stopwatch.svg"></span>
+                        Time streaming
+                    </div>
+                    <div id="stream-time" class="body"></div>
+                </div>
+                <div class="half">
+                    <div class="header">
+                        <span><img class="icon" src="assets/icons/clock.svg"></span>
+                        Local Time
+                    </div>
+                    <div id="local-time" class="body"></div>
+                </div>
+            </div>
+            <div class="segment">
+                <div class="header">
+                    <span><img class="icon" src="assets/icons/gamepad.svg"></span>
+                    Now Playing
+                </div>
+                <div id="now-playing" class="body"></div>
+            </div>
+            <div class="segment">
+                <div class="header">
+                    <span><img class="icon" src="assets/icons/microphone.svg"></span>
+                    On the mic
+                </div>
+                <div id="casters" class="body"></div>
+            </div>
+        </div>
+        <div class="total-raised-box">
+            <div id="total-raised"></div>
+        </div>
+    </div>
+    <div id="donation-wrapper" class="content-box donation">
+        <div class="header">
+            <span><img class="icon" src="assets/icons/money.svg"></span>
+            <span id="donation-header"></span>
+        </div>
+        <div id="donation-body" class="body"></div>
+    </div>
+</body>
+</html>

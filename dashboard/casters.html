@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+    <script src="src/casters.js" defer></script>
+    <style>
+        .section > input {
+            margin-bottom: 12px;
+        }
+
+        #notsaved {
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h3 id="nocasters">No casters</h3>
+    <div id="wrapper" class="wrapper">
+        <div class="section" id="caster1section">
+            <div class="title">Caster 1</div>
+            <label for="caster1name">Name</label>
+            <input type="text" id="caster1name" autocomplete="off" onchange="nameChanged(0)">
+            <button onclick="removeButtonClicked(0)">Remove</button>
+        </div>
+        <div class="section" id="caster2section">
+            <div class="title">Caster 2</div>
+            <label for="caster2name">Name</label>
+            <input type="text" id="caster2name" autocomplete="off" onchange="nameChanged(1)">
+            <button onclick="removeButtonClicked(1)">Remove</button>
+        </div>
+        <div class="section" id="caster3section">
+            <div class="title">Caster 3</div>
+            <label for="caster3name">Name</label>
+            <input type="text" id="caster3name" autocomplete="off" onchange="nameChanged(2)">
+            <button onclick="removeButtonClicked(2)">Remove</button>
+        </div>
+        <div class="section" id="caster4section">
+            <div class="title">Caster 4</div>
+            <label for="caster4name">Name</label>
+            <input type="text" id="caster4name" autocomplete="off" onchange="nameChanged(3)">
+            <button onclick="removeButtonClicked(3)">Remove</button>
+        </div>
+    </div>
+
+    <button id="add" onclick="addButtonClicked()">Add</button>
+    <button id="update" class="green" onclick="updateButtonClicked()">Update</button>
+    <button id="undo" class="red" onclick="revertButtonClicked()">Revert</button>
+    <div id="notsaved" class="alert">⚠ Changes not updated</div>
+</body>
+</html>

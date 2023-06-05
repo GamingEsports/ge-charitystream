@@ -1,0 +1,103 @@
+.background {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    top: 0;
+    left: 0;
+}
+
+.content-box {
+    position: absolute;
+    width: 479px;
+    height: 773px;
+    left: 70px;
+    top: 60px;
+    background: #73242A;
+    box-shadow: 0px 0px 70.288px rgba(250, 202, 111, 0.15);
+    border-radius: 18.9117px;
+    overflow: hidden;
+}
+
+.logo {
+    position: absolute;
+    width: 847.37px;
+    height: 143px;
+    left: 70px;
+    top: 870px;
+}
+
+.total-raised-box {
+    position: absolute;
+    width: 760px;
+    height: 164px;
+    left: 1100px;
+    top: 850px;
+    background-image: url("../assets/total-raised-wrapper.svg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Syne", sans-serif;
+    font-variant-numeric: lining-nums;
+    font-size: 105px;
+    color: white;
+}
+
+#total-raised{
+    transform: translateY(10px);
+}
+
+#total-raised::before {
+    content: "$";
+    font-size: .7em;
+    margin-top: .3em;
+}
+
+.segment {
+    width: 100%;
+    height: 100%;
+}
+
+.segment > .header {
+    font-family: "Syne", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    border-bottom: 1px dashed #FACA6F;
+    margin: 18px;
+    margin-bottom: 0;
+    padding-bottom: 9px;
+    text-transform: uppercase;
+    line-height: 90%;
+}
+
+.segment > .body {
+    margin: 0 18px;
+    width: calc(100% - 36px);
+}
+
+.wrapper{
+    padding: 14px 0;
+}
+
+.wrapper:not(:last-child) {
+    border-bottom: 1px dashed #FACA6F;
+}
+
+.wrapper > .header {
+    font-family: "Archivo", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #FACA6F;
+}
+
+.wrapper > .body {
+    font-family: "Archivo", sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+
+.wrapper > .body.small {
+    font-size: 24px;
+}

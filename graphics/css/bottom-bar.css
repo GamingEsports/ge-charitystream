@@ -1,0 +1,138 @@
+body {
+    width: 1920px;
+    height: 1080px;
+    background-color: #2A0E10;
+    outline: 2px solid white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.graphic-wrapper {
+    width: 1702px;
+    height: 112px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.charity-logo {
+    width: 485px;
+    height: 100%;
+    object-fit: contain;
+}
+
+.content-box {
+    width: 630px;
+    height: 82px;
+    background-color: #73242A;
+    border-radius: 6px;
+    box-shadow: 0px 0px 71.4954px rgba(250, 202, 111, 0.15);
+    overflow: hidden;
+}
+
+.content-box > .segment {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;    
+    justify-content: center;
+    white-space: nowrap;
+    margin: 0 10px;
+}
+
+.content-box > .segment.split{
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.content-box > .segment.split > .half{
+    width: calc(50% - 1px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.content-box > .segment.split > .half:first-child{
+    border-right: 2px solid #2A0E10;
+    height: 85%;
+}
+
+.content-box > .segment.split > .half:last-child{
+    margin-left: 10px;
+}
+
+.content-box > .segment > .header, .content-box > .segment.split > .half > .header, .donation > .header {
+    color: #E7AE47;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 24px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.content-box > .segment > .body, .content-box > .segment.split > .half > .body, .donation > .body {
+    color: white;
+    font-family: "Archivo", sans-serif; 
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 95%;
+}
+
+.icon {
+    height: .72em;
+    width: auto;
+    margin-right: .5em;
+}
+
+.total-raised-box {
+    width: 485px;
+    height: 100%;
+    background-image: url("../assets/total-raised-wrapper.svg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Syne", sans-serif;
+    font-variant-numeric: lining-nums;
+    font-size: 60px;
+    color: white;
+    transform: translate(0, 3px);
+}
+
+#total-raised {
+    transform: translateY(4px);
+}
+
+#total-raised::before {
+    content: "$";
+    font-size: .7em;
+    margin-top: .3em;
+}
+
+.donation {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: absolute;
+    background: #FACA6F;
+    margin-bottom: 14px;
+    padding-left: 10px;
+    white-space: nowrap;
+    --wipe: 0%;
+    -webkit-mask: linear-gradient(135deg, black var(--wipe), transparent var(--wipe));
+}
+
+.donation > * {
+    color: #2A0E10 !important;
+}

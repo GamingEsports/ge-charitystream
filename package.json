@@ -1,0 +1,93 @@
+{
+  "name": "ge-charitystream",
+  "version": "0.0.0",
+  "description": "Overlay dashboard controls and graphics for the GE charity stream",
+  "homepage": "",
+  "author": {
+    "name": "Derek Bond",
+    "email": "derek.bond24@gmail.com"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^2.1.0",
+    "dashboardPanels": [
+      {
+        "name": "casters",
+        "title": "Casters",
+        "width": 3,
+        "file": "casters.html",
+        "headerColor": "#525F78",
+        "workspace": "Charity Stream"
+      },
+      {
+        "name": "schedule",
+        "title": "Schedule",
+        "width": 3,
+        "file": "schedule.html",
+        "headerColor": "#525F78",
+        "workspace": "Charity Stream"
+      },
+      {
+        "name": "donations",
+        "title": "Donations",
+        "width": 3,
+        "file": "donations.html",
+        "headerColor": "#525F78",
+        "workspace": "Charity Stream"
+      },
+      {
+        "name": "stream-time",
+        "title": "Stream Time",
+        "width": 2,
+        "file": "streamtimer.html",
+        "headerColor": "#525F78",
+        "workspace": "Charity Stream"
+      },
+      {
+        "name": "debug",
+        "title": "Debug",
+        "width": 2,
+        "file": "debug.html",
+        "headerColor": "#E53935",
+        "workspace": "Charity Stream"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "bottom-bar.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "game-bg.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "camera-bg.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "break.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  "repository": "https://github.com/nodecg/nodecg.git",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "socket.io-client": "^4.6.2"
+  }
+}

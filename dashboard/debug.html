@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <textarea id="donationRepView" rows="25" style="width: 100%"></textarea>
+    <button class="button" id="updateDonationButton">Update donations</button>
+
+    <script>
+        const donationRep = nodecg.Replicant('cs-donations', {defaultValue: []});
+        donationRep.on('change', (newVal) => {
+            donationRepView.value = JSON.stringify(newVal, null, 1);
+        });
+        const updateDonationButton = document.getElementById('updateDonationButton');
+        updateDonationButton.addEventListener('click', () => {
+            try {
+                donationRep.value = JSON.parse(donationRepView.value);
+            } catch (e) {
+                alert(`Something didn't go to plan :(\n\n${e}`);
+            }
+        });
+    </script>
+</body>
+</html>

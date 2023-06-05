@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+    <script src="src/schedule.js" defer></script>
+    <style>
+        #notsaved {
+            margin-top: 8px;
+        }
+
+        .section > button {
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="nowplaying"></div>
+    <h3 id="noschedule">No schedule items</h3>
+    <div class="wrapper" id="wrapper"></div>
+    <button id="add" onclick="addButtonClicked()">Add</button>
+    <button id="update" class="green" onclick="updateButtonClicked()">Update</button>
+    <button id="undo" class="red" onclick="revertButtonClicked()">Revert</button>
+    <div id="notsaved" class="alert">⚠ Changes not updated</div>
+</body>
+</html>

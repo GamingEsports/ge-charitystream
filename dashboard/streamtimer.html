@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+    <script src="src/streamtimer.js" defer></script>
+    <style>
+        #reset-confirm {
+            display: none;
+        }
+
+        #note {
+            font-size: .7em;
+            font-style: italic;
+            margin-top: 12px;
+        }
+
+        #localtime {
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        #timer {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .paused{
+            font-size: 0.4em;
+            font-style: italic;
+            font-weight: 400;
+            margin-left: .5em;
+        }
+    </style>
+</head>
+<body>
+    <div id="localtime"></div>
+    <div class="section">
+        <div id="timer">00:00:00</div>
+        <button id="startstop" onclick="startStopButtonClicked()">Start</button>
+        <button id="reset" class="red" onclick="resetButtonClicked()">Reset</button>
+        <button id="reset-confirm" class="red" onclick="resetConfirmButtonClicked()">Are you sure?</button>
+    </div>
+    <div id="note">Time is kept precisely, but the display may lag behind the internal timer.</div>
+</body>
+</html>
