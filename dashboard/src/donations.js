@@ -2,19 +2,29 @@ const donationRep = nodecg.Replicant('cs-donations');
 
 const approvedDonationWrapper = document.querySelector("#approvedDonationWrapper");
 const unapprovedDonationWrapper = document.querySelector("#unapprovedDonationWrapper");
+const unapprovedNotice = document.querySelector("#unapprovedNotice");
 
 NodeCG.waitForReplicants(donationRep).then(() => {
 
     donationRep.on('change', (newVal) => {
         approvedDonationWrapper.innerHTML = "";
         unapprovedDonationWrapper.innerHTML = "";
+        let unapprovedCount = 0;
 
         for (let i = 0; i < newVal.length; i++) {
             if (newVal[i].approved) {
                 approvedDonationWrapper.appendChild(getApprovedDonationElement(newVal[i], i));
             } else {
                 unapprovedDonationWrapper.appendChild(getUnapprovedDonationElement(newVal[i], i));
+                unapprovedCount++;
             }
+        }
+
+        if (unapprovedCount > 0) {
+            unapprovedNotice.innerHTML = `⚠ ${unapprovedCount} unapproved donation${unapprovedCount > 1 ? "s" : ""}`;
+            unapprovedNotice.style.display = "block";
+        } else {
+            unapprovedNotice.style.display = "none";
         }
     });
 

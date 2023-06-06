@@ -5,6 +5,7 @@ const donationRep = nodecg.Replicant("cs-donations");
 
 const contentBoxTL = gsap.timeline();
 const donationTL = gsap.timeline();
+const donationTotalTL = gsap.timeline();
 
 const localTime = document.querySelector("#local-time");
 const streamTime = document.querySelector("#stream-time");
@@ -184,13 +185,21 @@ function sendDonation(info) {
         duration: .8, "--wipe": "100%", ease: "power3.out"
         , onStart: () => {
             donationHeader.innerHTML = `From ${info.name} / $${info.amount.toFixed(2)}`;
-            if (info.message != null) {
+            if (info.message != null && info.message !== "") {
                 donationBody.innerHTML = info.message;
                 donationHeader.parentElement.style.fontSize = "24px";
             } else {
                 donationBody.innerHTML = "";
                 donationHeader.parentElement.style.fontSize = "36px";
             }
+
+            if (donationHeader.offsetWidth > 590){
+                donationHeader.style.transform = `scaleX(${590 / donationHeader.offsetWidth})`;
+                donationHeader.style.transformOrigin = "left";
+            } else {
+                donationHeader.style.transform = `scaleX(1)`;
+            }
+
             gsap.set(donationBody, { x: 0 });
 
             gsap.fromTo([donationHeader.parentElement, donationBody], { x: -80 }, { x: 0, duration: .8, ease: "power3.out" });
@@ -221,10 +230,23 @@ function sendDonation(info) {
 }
 
 function updateDonationTotal(obj) {
+    const elem = document.querySelector('#total-raised');
     let total = 0;
+    let base = parseFloat(elem.innerHTML);
+    if (isNaN(base)) {
+        base = 0;
+    }
     for (let i = 0; i < obj.length; i++) {
         if (obj[i].approved === false) continue;
         total += obj[i].amountUSD;
     }
-    document.querySelector('#total-raised').innerHTML = total.toFixed(2);
+    let keyframes = [];
+    for (let i = base; i < total; i += total/(base + 1)) {
+        keyframes.push(i);
+    }
+
+    for (let i = 0; i < keyframes.length; i++) {
+        donationTotalTL.set(elem, {innerHTML: keyframes[i].toFixed(2), ease: "power2.out"}, `+=0.07`);
+    }
+    donationTotalTL.set(elem, {innerHTML: total.toFixed(2), ease: "power2.out"}, `+=0.07`);
 }
