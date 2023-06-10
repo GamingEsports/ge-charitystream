@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=IBM+Plex+Mono&family=Syne:wght@600;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -9,9 +12,59 @@
         img {
             filter: drop-shadow(0 0 32px #2A0E10);
         }
+
+        .l3 {
+            position: absolute;
+            top: 25px;
+            z-index: 1;
+            background: url(assets/background.png);
+            width: fit-content;
+            height: fit-content;
+            font-size: 30px;
+            padding: 10px;
+            padding-left: 30px;
+            padding-right: 80px;
+            clip-path: polygon(0 0, 100% 0, calc(100% - 65px) 100%, 0% 100%);
+            display: flex;
+            align-items: center;
+        }
+
+        .header {
+            font-family: "IBM Plex Mono", monospace;
+            color: #E7AE47;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            margin-right: 1em;
+        }
+
+        .header::before{
+            content: " ";
+            display: inline-block;
+            width: .9em;
+            height: .9em;
+            background-color: #C30F31;
+            filter: drop-shadow(0 0 3px #C30F3180);
+            margin-right: .4em;
+            border-radius: 100%;
+        }
+
+        .body {
+            font-family: "Archivo", sans-serif;
+            color: white;
+            font-size: 1.1em;
+        }
     </style>
 </head>
 <body>
     <img src="assets/camera-scene-bg.svg">
+    <div class="l3">
+        <div class="header">
+            Live from
+        </div>
+        <div class="body">
+            Iowa State University Gaming & Esports room
+        </div>
+    </div>
 </body>
 </html>

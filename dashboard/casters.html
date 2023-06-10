@@ -5,11 +5,15 @@
 	<link rel="stylesheet" href="style.css">
     <script src="src/casters.js" defer></script>
     <style>
-        .section > input {
+        .section > input:not(:first) {
             margin-bottom: 12px;
         }
 
         #notsaved {
+            margin-top: 8px;
+        }
+
+        .section > button {
             margin-top: 8px;
         }
     </style>
@@ -21,25 +25,39 @@
             <div class="title">Caster 1</div>
             <label for="caster1name">Name</label>
             <input type="text" id="caster1name" autocomplete="off" onchange="nameChanged(0)">
+            <label for="caster1title">Title</label>
+            <input type="text" id="caster1title" autocomplete="off" onchange="titleChanged(0)">
             <button onclick="removeButtonClicked(0)">Remove</button>
+            <button class="caster-down-button" onclick="downButtonClicked(0)">▼</button>
         </div>
         <div class="section" id="caster2section">
             <div class="title">Caster 2</div>
             <label for="caster2name">Name</label>
             <input type="text" id="caster2name" autocomplete="off" onchange="nameChanged(1)">
+            <label for="caster2title">Title</label>
+            <input type="text" id="caster2title" autocomplete="off" onchange="titleChanged(1)">
             <button onclick="removeButtonClicked(1)">Remove</button>
+            <button class="caster-up-button" onclick="upButtonClicked(1)">▲</button>
+            <button class="caster-down-button" onclick="downButtonClicked(1)">▼</button>
         </div>
         <div class="section" id="caster3section">
             <div class="title">Caster 3</div>
             <label for="caster3name">Name</label>
             <input type="text" id="caster3name" autocomplete="off" onchange="nameChanged(2)">
+            <label for="caster3title">Title</label>
+            <input type="text" id="caster3title" autocomplete="off" onchange="titleChanged(2)">
             <button onclick="removeButtonClicked(2)">Remove</button>
+            <button class="caster-up-button" onclick="upButtonClicked(2)">▲</button>
+            <button class="caster-down-button" onclick="downButtonClicked(2)">▼</button>
         </div>
         <div class="section" id="caster4section">
             <div class="title">Caster 4</div>
             <label for="caster4name">Name</label>
             <input type="text" id="caster4name" autocomplete="off" onchange="nameChanged(3)">
+            <label for="caster4title">Title</label>
+            <input type="text" id="caster4title" autocomplete="off" onchange="titleChanged(3)">
             <button onclick="removeButtonClicked(3)">Remove</button>
+            <button class="caster-up-button" onclick="upButtonClicked(3)">▲</button>
         </div>
     </div>
 

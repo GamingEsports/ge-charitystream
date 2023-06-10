@@ -107,6 +107,9 @@ body {
     font-size: 60px;
     color: white;
     transform: translate(0, 3px);
+    --shadow: 0px;
+    --shadow-color: #FACA6F00;
+    filter: drop-shadow(0 0 var(--shadow) var(--shadow-color));
 }
 
 #total-raised {
@@ -135,4 +138,12 @@ body {
 
 .donation > * {
     color: #2A0E10 !important;
+}
+
+.caster-title{
+    font-size: .6em;
+    margin-top: .4em;
+    margin-left: .3em;
+    font-weight: normal;
+    color: #FACA6F;
 }

@@ -16,7 +16,7 @@ const donationHeader = document.querySelector("#donation-header");
 const donationBody = document.querySelector("#donation-body");
 
 window.onload = function () {
-    animateContentBoxTL(0);
+    animateContentBoxTL(02);
     initLocalTime();
 };
 
@@ -157,7 +157,11 @@ function updateCasters(obj) {
     let names = [];
     for (let i = 0; i < obj.length; i++) {
         if (obj[i].name !== "" && obj[i].visible) {
-            names.push(obj[i].name);
+            let casterHTML = obj[i].name;
+            if (obj[i].title !== "") {
+                casterHTML += `<span class="caster-title">${obj[i].title}</span>`;
+            }
+            names.push(casterHTML);
         }
     }
 
@@ -193,8 +197,8 @@ function sendDonation(info) {
                 donationHeader.parentElement.style.fontSize = "36px";
             }
 
-            if (donationHeader.offsetWidth > 590){
-                donationHeader.style.transform = `scaleX(${590 / donationHeader.offsetWidth})`;
+            if (donationHeader.offsetWidth > 570){
+                donationHeader.style.transform = `scaleX(${570 / donationHeader.offsetWidth})`;
                 donationHeader.style.transformOrigin = "left";
             } else {
                 donationHeader.style.transform = `scaleX(1)`;
@@ -241,12 +245,20 @@ function updateDonationTotal(obj) {
         total += obj[i].amountUSD;
     }
     let keyframes = [];
-    for (let i = base; i < total; i += total/(base + 1)) {
+    for (let i = base; i < total; i += Math.max(1, Math.floor((total - base) / 10))) {
         keyframes.push(i);
     }
 
+    donationTotalTL.to(elem.parentElement, { "--shadow": "32px", "--shadow-color": "#FACA6FFF", duration: .5, ease: "power2.in"});
+
     for (let i = 0; i < keyframes.length; i++) {
-        donationTotalTL.set(elem, {innerHTML: keyframes[i].toFixed(2), ease: "power2.out"}, `+=0.07`);
+        donationTotalTL.set(elem, 
+            {text: keyframes[i].toFixed(2), ease: "power2.out"},
+        `+=0.08`);
     }
-    donationTotalTL.set(elem, {innerHTML: total.toFixed(2), ease: "power2.out"}, `+=0.07`);
+    donationTotalTL.set(elem, 
+        {text: total.toFixed(2), ease: "power2.out"}, 
+    `+=0.08`);
+
+    donationTotalTL.to(elem.parentElement, { "--shadow": "0px", "--shadow-color": "#FACA6F00", duration: .5, ease: "power2.out"});
 }

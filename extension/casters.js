@@ -5,10 +5,10 @@ module.exports = function(nodecg) {
 
     if (castersRep.value === undefined || castersRep.value.length != 4) {
         castersRep.value = [
-            {name: "", visible: false},
-            {name: "", visible: false},
-            {name: "", visible: false},
-            {name: "", visible: false}
+            {name: "", title: "", visible: false},
+            {name: "", title: "", visible: false},
+            {name: "", title: "", visible: false},
+            {name: "", title: "", visible: false}
         ];
     } 
     

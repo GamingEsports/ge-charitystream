@@ -41,6 +41,9 @@
     font-variant-numeric: lining-nums;
     font-size: 105px;
     color: white;
+    --shadow: 0px;
+    --shadow-color: #FACA6F00;
+    filter: drop-shadow(0 0 var(--shadow) var(--shadow-color));
 }
 
 #total-raised{

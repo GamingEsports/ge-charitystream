@@ -23,12 +23,26 @@ NodeCG.waitForReplicants(castersRep, unsavedCastRep).then(() => {
         let numVisible = 0;
 
         for (let i = 0; i < sections.length; i++) {
-            document.querySelector(`#caster${i+1}section`).style.display = newVal[i].visible ? "block" : "none";
+            const section = document.querySelector(`#caster${i+1}section`)
+            section.style.display = newVal[i].visible ? "block" : "none";
+
+            const downButton = section.querySelector(".caster-down-button");
+            if (downButton) {
+                downButton.style.display = "inline-block";
+            }
+            
             if (newVal[i].visible) {
                 numVisible++;
+            } else {
+                const prev = i - 1;
+                const prevDownButton = document.querySelector(`#caster${prev+1}section > .caster-down-button`);
+                if (prevDownButton) {
+                    prevDownButton.style.display = "none";
+                }
             }
             
             document.querySelector(`#caster${i+1}name`).value = newVal[i].name;
+            document.querySelector(`#caster${i+1}title`).value = newVal[i].title;
         }
 
         const addButton = document.querySelector(`#add`);
@@ -75,7 +89,7 @@ function addButtonClicked(){
     if (index >= 4) {
         return;
     }
-    unsavedCastRep.value[index] = {name: "", visible: true};
+    unsavedCastRep.value[index] = {name: "", title: "", visible: true};
 }
 
 function removeButtonClicked(index){
@@ -98,12 +112,31 @@ function nameChanged(index){
     unsavedCastRep.value[index.toString()].name = document.querySelector(`#caster${index+1}name`).value;
 }
 
+function titleChanged(index){
+    unsavedCastRep.value[index.toString()].title = document.querySelector(`#caster${index+1}title`).value;
+}
+
+function downButtonClicked(index){
+    const temp = unsavedCastRep.value[index];
+    unsavedCastRep.value[index] = unsavedCastRep.value[index+1];
+    unsavedCastRep.value[index+1] = temp;
+}
+
+function upButtonClicked(index){
+    const temp = unsavedCastRep.value[index];
+    unsavedCastRep.value[index] = unsavedCastRep.value[index-1];
+    unsavedCastRep.value[index-1] = temp;
+}
+
 function replicantsEqual(a, b){
     if (a.length != b.length) {
         return false;
     }
     for (let i = 0; i < a.length; i++) {
         if (a[i].name != b[i].name){
+            return false;
+        }
+        if (a[i].title != b[i].title){
             return false;
         }
         if (a[i].visible != b[i].visible){
