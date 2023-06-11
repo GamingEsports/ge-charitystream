@@ -13,3 +13,15 @@
     padding-bottom: 8px;
     background: linear-gradient(180deg, #303b4f calc(100% - 8px), transparent 100%);
 }
+
+.sticky-bottom {
+    position: sticky;
+    bottom: 0;
+    padding-top: 8px;
+    background: linear-gradient(0deg, #303b4f calc(100% - 8px), transparent 100%);
+}
+
+.pinned-bottom {
+    position: fixed;
+    bottom: 0;
+}

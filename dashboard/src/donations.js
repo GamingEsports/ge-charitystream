@@ -31,7 +31,7 @@ NodeCG.waitForReplicants(donationRep).then(() => {
             unapprovedNotice.style.display = "none";
         }
     });
-
+    
 });
 
 function getUnapprovedDonationElement(value, index){

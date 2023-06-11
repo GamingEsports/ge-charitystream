@@ -61,9 +61,11 @@
         </div>
     </div>
 
-    <button id="add" onclick="addButtonClicked()">Add</button>
-    <button id="update" class="green" onclick="updateButtonClicked()">Update</button>
-    <button id="undo" class="red" onclick="revertButtonClicked()">Revert</button>
-    <div id="notsaved" class="alert">⚠ Changes not updated</div>
+    <div class="sticky-bottom">
+        <button id="add" onclick="addButtonClicked()">Add</button>
+        <button id="update" class="green" onclick="updateButtonClicked()">Update</button>
+        <button id="undo" class="red" onclick="revertButtonClicked()">Revert</button>
+        <div id="notsaved" class="alert">⚠ Changes not updated</div>
+    </div>
 </body>
 </html>
