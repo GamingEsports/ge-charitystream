@@ -9,6 +9,10 @@ const resetConfirmButton = document.querySelector('#reset-confirm');
 updateLocalTime();
 setInterval(updateLocalTime, 5000);
 
+if (window.location.href.includes("standalone=true")) {
+    document.head.innerHTML += `<link rel="stylesheet" href="standalone-style.css">`
+}
+
 NodeCG.waitForReplicants(timerRep).then(() => {
 
     timerRep.on('change', (newVal) => {

@@ -6,6 +6,10 @@ const noSchedule = document.querySelector("#noschedule");
 const nowPlaying = document.querySelector("#nowplaying");
 const wrapper = document.querySelector("#wrapper");
 
+if (window.location.href.includes("standalone=true")) {
+    document.head.innerHTML += `<link rel="stylesheet" href="standalone-style.css">`
+}
+
 NodeCG.waitForReplicants(scheduleRep, unsavedScheduleRep).then(() => {
     console.log("schedule", scheduleRep.value, unsavedScheduleRep.value, !replicantsEqual(unsavedScheduleRep.value, scheduleRep.value));    
 

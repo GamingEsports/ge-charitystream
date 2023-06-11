@@ -4,6 +4,10 @@ const approvedDonationWrapper = document.querySelector("#approvedDonationWrapper
 const unapprovedDonationWrapper = document.querySelector("#unapprovedDonationWrapper");
 const unapprovedNotice = document.querySelector("#unapprovedNotice");
 
+if (window.location.href.includes("standalone=true")) {
+    document.head.innerHTML += `<link rel="stylesheet" href="standalone-style.css">`
+}
+
 NodeCG.waitForReplicants(donationRep).then(() => {
 
     donationRep.on('change', (newVal) => {

@@ -1,0 +1,15 @@
+.wrapper {
+    max-height: none;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+}
+
+.sticky {
+    position: sticky;
+    top: -1px;
+    padding-bottom: 8px;
+    background: linear-gradient(180deg, #303b4f calc(100% - 8px), transparent 100%);
+}

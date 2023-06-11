@@ -6,6 +6,10 @@ const noCasters = document.querySelector("#nocasters");
 const sections = document.querySelectorAll('.section');
 const wrapper = document.querySelector("#wrapper");
 
+if (window.location.href.includes("standalone=true")) {
+    document.head.innerHTML += `<link rel="stylesheet" href="standalone-style.css">`
+}
+
 NodeCG.waitForReplicants(castersRep, unsavedCastRep).then(() => {
     console.log("casters", castersRep.value, unsavedCastRep.value, !replicantsEqual(unsavedCastRep.value, castersRep.value));
 
