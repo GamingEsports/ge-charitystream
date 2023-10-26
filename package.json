@@ -68,6 +68,11 @@
         "height": 1080
       },
       {
+        "file": "bg.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
         "file": "game-bg.html",
         "width": 1920,
         "height": 1080
@@ -78,7 +83,17 @@
         "height": 1080
       },
       {
+        "file": "dual-bg.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
         "file": "break.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "donation-goals.html",
         "width": 1920,
         "height": 1080
       }
@@ -88,6 +103,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "lodash": "^4.17.21",
+    "node-fetch": "^2.7.0",
     "socket.io-client": "^4.6.2"
   }
 }

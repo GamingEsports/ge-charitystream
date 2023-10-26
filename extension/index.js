@@ -1,7 +1,7 @@
 const init = [
 	require('./timer'),
 	require('./casters'),
-	require('./donationWatcher'),
+	require('./tiltifyWatcher'),
 ];
 
 module.exports = function(nodecg) {

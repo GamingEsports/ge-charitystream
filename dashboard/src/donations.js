@@ -1,8 +1,10 @@
 const donationRep = nodecg.Replicant('cs-donations');
+const donationRefresh = nodecg.Replicant('cs-donation-refresh', {defaultValue: false});
 
 const approvedDonationWrapper = document.querySelector("#approvedDonationWrapper");
 const unapprovedDonationWrapper = document.querySelector("#unapprovedDonationWrapper");
 const unapprovedNotice = document.querySelector("#unapprovedNotice");
+const refreshButton = document.querySelector("#refresh");
 
 if (window.location.href.includes("standalone=true")) {
     document.head.innerHTML += `<link rel="stylesheet" href="standalone-style.css">`
@@ -29,6 +31,18 @@ NodeCG.waitForReplicants(donationRep).then(() => {
             unapprovedNotice.style.display = "block";
         } else {
             unapprovedNotice.style.display = "none";
+        }
+    });
+
+    donationRefresh.on('change', (newVal) => {
+        if (newVal) {
+            refreshButton.classList.add("green");
+            refreshButton.classList.remove("red");
+            refreshButton.innerHTML = "Refresh is ON";
+        } else {
+            refreshButton.classList.add("red");
+            refreshButton.classList.remove("green");
+            refreshButton.innerHTML = "Refresh is OFF";
         }
     });
     
@@ -137,4 +151,8 @@ function getApprovedDonationElement(value){
         <div><span class="tag">Time</span> ${new Date(value.timestamp).toLocaleString()}</div>
     `;
     return donationElement;
+}
+
+function refreshButtonClicked() {
+    donationRefresh.value = !donationRefresh.value;
 }
