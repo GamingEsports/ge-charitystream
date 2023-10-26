@@ -6,6 +6,7 @@ const donationRep = nodecg.Replicant("cs-donations");
 const contentBoxTL = gsap.timeline();
 const donationTL = gsap.timeline();
 const donationTotalTL = gsap.timeline();
+let donationTotal = 0;
 
 const localTime = document.querySelector("#local-time");
 const streamTime = document.querySelector("#stream-time");
@@ -16,7 +17,7 @@ const donationHeader = document.querySelector("#donation-header");
 const donationBody = document.querySelector("#donation-body");
 
 window.onload = function () {
-    animateContentBoxTL(02);
+    animateContentBoxTL(2);
     initLocalTime();
 };
 
@@ -186,8 +187,13 @@ function sendDonation(info) {
     let duration = 20;
     console.log("new donation", info);
     donationTL.to(donationWrapper, {
-        duration: .8, "--wipe": "100%", ease: "power3.out"
+        duration: .8, "--wipe": "100%", ease: "power3.out",
+        onComplete: () => {
+            donationTL.pause();
+        }
         , onStart: () => {
+            const innerDonationTL = gsap.timeline();
+            
             donationHeader.innerHTML = `From ${info.name} / $${info.amount.toFixed(2)}`;
             if (info.message != null && info.message !== "") {
                 donationBody.innerHTML = info.message;
@@ -225,15 +231,21 @@ function sendDonation(info) {
                 }
             }
 
-            donationTL.to(donationWrapper, { duration: 1, "--wipe": "0%", ease: "power4.in" }, `+=${duration}`);
+            innerDonationTL.to(donationWrapper, { duration: 1, "--wipe": "0%", ease: "power4.in" }, `+=${duration}`);
             gsap.fromTo(donationHeader.parentElement, { x: 0 }, { x: -80, duration: 1, ease: "power4.in", delay: duration + .8 });
             gsap.fromTo(donationBody, { x: -endPoint }, { x: -endPoint - 80, duration: 1, ease: "power4.in", delay: duration + .8 });
-            donationTL.set({}, {}, "+=1")
+            innerDonationTL.set({}, {
+                onComplete: () => {
+                    donationTL.resume();
+                }
+            }, "+=1")
         }
     });
 }
 
 function updateDonationTotal(obj) {
+    donationTotalTL.clear();
+
     const elem = document.querySelector('#total-raised');
     let total = 0;
     let base = parseFloat(elem.innerHTML);
@@ -244,21 +256,31 @@ function updateDonationTotal(obj) {
         if (obj[i].approved === false) continue;
         total += obj[i].amountUSD;
     }
-    let keyframes = [];
-    for (let i = base; i < total; i += Math.max(1, Math.floor((total - base) / 10))) {
-        keyframes.push(i);
-    }
+    let keyframes = generateLinearNumbersInRange(base, total);
 
     donationTotalTL.to(elem.parentElement, { "--shadow": "32px", "--shadow-color": "#FACA6FFF", duration: .5, ease: "power2.in"});
 
     for (let i = 0; i < keyframes.length; i++) {
         donationTotalTL.set(elem, 
-            {text: keyframes[i].toFixed(2), ease: "power2.out"},
-        `+=0.08`);
+            {text: keyframes[i].toFixed(2)},
+        `+=0.05`);
     }
     donationTotalTL.set(elem, 
-        {text: total.toFixed(2), ease: "power2.out"}, 
-    `+=0.08`);
+        {text: total.toFixed(2)}, 
+    `+=0.05`);
 
     donationTotalTL.to(elem.parentElement, { "--shadow": "0px", "--shadow-color": "#FACA6F00", duration: .5, ease: "power2.out"});
 }
+
+function generateLinearNumbersInRange(min, max) {
+    const count = Math.min(Math.max((max - min) * 2, 10), 100);
+    const step = (max - min) / (count - 1);
+    const result = [];
+  
+    for (let i = 0; i < count; i++) {
+      const value = min + i * step;
+      result.push(value);
+    }
+  
+    return result;
+  }
